@@ -21,10 +21,10 @@ namespace Functions
 
             builder.Services.AddSingleton(appSettings);
 
-            builder.Services.AddDbContext<OrderContext>(
+            builder.Services.AddDbContext<VisitContext>(
                 (serviceProvider, options) => { options.UseSqlServer(appSettings.ConnectionStrings.Orders); }, ServiceLifetime.Transient);
 
-            builder.Services.AddTransient<IOrderService, OrderService>();
+            builder.Services.AddTransient<IVisitService, VisitService>();
         }
 
         public override void ConfigureAppConfiguration(IFunctionsConfigurationBuilder builder)

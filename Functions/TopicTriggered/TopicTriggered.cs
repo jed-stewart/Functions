@@ -9,27 +9,27 @@ namespace Functions.TopicTriggered
 {
     public class TopicTriggered
     {
-        private readonly IOrderService _orderService;
+        private readonly IVisitService _visitService;
         public TopicTriggered(
-            IOrderService orderService)
+            IVisitService visitService)
         {
-            _orderService = orderService;
+            _visitService = visitService;
         }
 
         [FunctionName("TopicTriggered")]
         public async Task RunAsync([ServiceBusTrigger("topic", "topic-subscription", Connection = "AzureServiceBus")]
-            CreateOrderEvent orderEvent, ILogger logger)
+            CreateVisitEvent visitEvent, ILogger logger)
         {
 
-            if (orderEvent is null)
+            if (visitEvent is null)
             {
-                logger.LogError("Invalid Create Order Event");
+                logger.LogError("Invalid Create Visit Event");
                 return;
             }
 
-            foreach (var order in orderEvent.orders)
+            foreach (var visit in visitEvent.Visits)
             {
-                await _orderService.AddAsync(order);
+                await _visitService.AddAsync(visit);
             }
         }
     }
