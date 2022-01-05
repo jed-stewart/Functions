@@ -31,6 +31,10 @@ I will use this to mantain my personal versions of Azure Function quick starts. 
 
 # Release Notes
 
+## [v0.0.2](https://github.com/jed-stewart/Functions/releases/tag/v0.0.2)
+
+* Changed Data Model
+
 ## [v0.0.1](https://github.com/jed-stewart/Functions/releases/tag/v.0.0.1)
 
 * Initial - Topic Initiated Triggers
